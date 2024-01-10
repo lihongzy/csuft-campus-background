@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: LihongYYDS888!
+    url: jdbc:mysql://127.0.0.1:3306/csuftcampus
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    database: 1
+    password: LihongYYDS888
+  jackson:
+    default-property-inclusion: non_null # JSON处理时忽略非空字段
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+#mybatis-plus default automatically convert camelCase and underscores
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # Entity field name for global tombstone
+      logic-delete-value: 1 # Logical removed value (default 1)
+      logic-not-delete-value: 0 # Logical non-removed values (default 0)
+
+csuftcampus:
+  minio:
+    access-key: minioadmin
+    secret-key: minioadmin
+    bucket-name: csuftcampus-bucket
+    endpoint-url: http://127.0.0.1:9000
+    server-url: http://47.120.48.151:9000
+
+logging:
+  file:
+    path: ${user.home}/logs/csuftcampus
